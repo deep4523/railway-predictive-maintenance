@@ -1,41 +1,24 @@
-import pandas as pd
-import matplotlib.pyplot as plt
+# Railway Predictive Maintenance System 🚆
 
-# Step 1: Load CSV file
-df = pd.read_csv("railway_data.csv")
+## 📌 Description
+This project analyzes railway machine data (Temperature & Vibration) using Python.
 
-# Step 2: Function to check status
-def check_status(temp, vib):
-    if temp > 75 or vib > 5:
-        return "High Risk"
-    else:
-        return "Normal"
+## ⚙️ Features
+- Detects High Risk conditions
+- Generates Alerts
+- Visualizes data using graphs
 
-# Step 3: Apply function
-df["Status"] = df.apply(lambda x: check_status(x["Temperature"], x["Vibration"]), axis=1)
+## 🛠️ Technologies Used
+- Python
+- Pandas
+- Matplotlib
 
-# Step 4: Print full data
-print("\n--- Railway Maintenance Data ---\n")
-print(df)
+## 📊 Output
+- Risk classification (Normal / High Risk)
+- Alert messages
+- Graph visualization
 
-# Step 5: Alert system
-print("\n--- ALERTS ---\n")
-for index, row in df.iterrows():
-    if row["Status"] == "High Risk":
-        print(f"⚠️ Alert at Row {index}: Temp={row['Temperature']} | Vibration={row['Vibration']}")
-
-# Step 6: Graph visualization
-plt.figure()
-
-# Scatter plot
-for status in ["Normal", "High Risk"]:
-    subset = df[df["Status"] == status]
-    plt.scatter(subset["Temperature"], subset["Vibration"], label=status)
-
-plt.xlabel("Temperature")
-plt.ylabel("Vibration")
-plt.title("Railway Predictive Maintenance System")
-plt.legend()
-plt.grid()
-
-plt.show()
+## 🚀 How to Run
+1. Install Python
+2. Run:
+   python maintenance.py
